@@ -21,11 +21,10 @@
  * @return {Array} A new array with only passed elements
  */
 Utils.filter = function(array, test) {
-  var result = array.slice(); // Clone array
+  var result = new Array();
   for (var i = 0; i < result.length; i++) {
-    if (!test(result[i])) {
-      result.splice(i, 1); // Remove element
-      i--;
+    if (test(result[i])) {
+      result.push(result[i]);
     }
   }
   return result;
