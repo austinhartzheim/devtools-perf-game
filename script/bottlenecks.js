@@ -86,11 +86,8 @@ var axes = {
  * @param {Number} value Distance to move
  */
 Utils.moveInDirection = function(direction, value) {
-  value /= 100;
-  for (var i = 0; i < 100; i++) {
-    for (var axis in axes) {
-      this[axis] += axes[axis](this.direction) * value;
-    }
+  for (var axis in axes) {
+    this[axis] += axes[axis](this.direction) * value;
   }
 };
 
