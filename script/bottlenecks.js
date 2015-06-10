@@ -86,7 +86,6 @@ var axes = {
  * @param {Number} value Distance to move
  */
 Utils.moveInDirection = function(direction, value) {
-  Utils.justAnExpensiveLoop();
   value /= 100;
   for (var i = 0; i < 100; i++) {
     for (var axis in axes) {
@@ -94,20 +93,6 @@ Utils.moveInDirection = function(direction, value) {
     }
   }
 };
-
-/**
- * I am really just an expensive loop ;)
- * Remove me and all references calling me!
- */
-Utils.justAnExpensiveLoop = function() {
-  // This isn't even doing anything
-  var oops = Array(1000);
-  oops.map(function(val, i) {
-    return Math.PI / 2500 * i;
-  }).filter(function(rad) {
-    return Math.sin(rad) > 0;
-  });
-}
 
 /**
  * Update ship position with current direction and speed
