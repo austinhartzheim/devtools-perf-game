@@ -37,25 +37,25 @@ Utils.filter = function(array, test) {
  * @return {Entity} Nearest Entity
  */
 Utils.nearest = function(from, entities) {
-  var distances = [];
-  for (var i = 0; i < entities.length; i++) {
+  var smallest = null;
+  var smallestEntity = null;
+
+  for (var i = 0; i < entities.length; i++ ) {
     var to = entities[i];
     if (from === to) continue;
     var distance = this.distance(from, to);
-    distances.push({
-      target: to,
-      distance: distance
-    });
-  }
-  if (!distances.length) {
-    return null;
-  }
-  var sortedDistances = distances.sort(
-    function sortDistances(a, b) {
-      return a.distance - b.distance;
+    if (smallest == null) {
+      smallest = distance;
+      smallestEntity = to;
+    } else {
+      if (distance < smallest) {
+        smallest = distance;
+        smallestEntity = to;
+      }
     }
-  );
-  return sortedDistances[0].target;
+  }
+
+  return smallestEntity;
 };
 
 /**
