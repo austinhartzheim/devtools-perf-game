@@ -73,21 +73,14 @@ ENGINE.Ship.prototype.getTarget = function() {
   return Utils.nearest(this, pool);
 };
 
-// We update those for positions, maybe we don't need it?
-var axes = {
-  x: Math.cos,
-  y: Math.sin
-};
-
 /**
  * Update position for an entity that has speed and direction.
  * @param {Number} direction Angle given in radians
  * @param {Number} value Distance to move
  */
 Utils.moveInDirection = function(direction, value) {
-  for (var axis in axes) {
-    this[axis] += axes[axis](this.direction) * value;
-  }
+  this.x += Math.cos(this.direction) * value;
+  this.y += Math.sin(this.direction) * value;
 };
 
 /**
@@ -112,9 +105,9 @@ ENGINE.Ship.prototype.move = function(dt) {
 ENGINE.Particle.prototype.step = function(dt) {
   this.lifetime += dt;
   // Update position
-  for (var axis in axes) {
-    this[axis] += axes[axis](this.direction) * this.speed * dt;
-  }
+  this.x += Math.cos(this.direction) * this.speed * dt;
+  this.y += Math.sin(this.direction) * this.speed * dt;
+
   this.speed = Math.max(0, this.speed - this.damping * dt);
 
   this.progress = Math.min(this.lifetime / this.duration, 1.0);
