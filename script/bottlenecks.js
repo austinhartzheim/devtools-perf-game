@@ -1,4 +1,4 @@
-/**
+[6~/**
  * This is bad and unoptimized code just for you to fix :)
  *
  * Get Firefox Developer Edition to try the new Performance Tools:
@@ -134,13 +134,7 @@ ENGINE.Particle.prototype.step = function(dt) {
  * @param {Star} star Probed star
  */
 ENGINE.BackgroundStars.prototype.wrap = function(star) {
-  var pos = [star.x, star.y, 1, 1];
-  var bounds = [0, 0, app.width, app.height];
-
-  if (pos[0] < bounds[0]) star.x = app.width;
-  if (pos[1] < bounds[1]) star.y = app.height;
-
-  if (pos[0] > bounds[2]) star.x = 0;
-  if (pos[1] > bounds[3]) star.y = 0;
+  star.x %= app.width;
+  star.y %= app.height;
 };
 
