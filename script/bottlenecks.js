@@ -1,4 +1,4 @@
-[6~/**
+/**
  * This is bad and unoptimized code just for you to fix :)
  *
  * Get Firefox Developer Edition to try the new Performance Tools:
