@@ -22,9 +22,9 @@
  */
 Utils.filter = function(array, test) {
   var result = new Array();
-  for (var i = 0; i < result.length; i++) {
-    if (test(result[i])) {
-      result.push(result[i]);
+  for (var i = 0; i < array.length; i++) {
+    if (test(array[i])) {
+      result.push(array[i]);
     }
   }
   return result;
